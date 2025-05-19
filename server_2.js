@@ -1,5 +1,5 @@
 // IMPORTACION MODULOS
-const servidorId = "server1";
+const servidorId = "server2";
 const express = require("express");
 const app = express();                                       // Iniciar app
 const http = require("http").createServer(app);              // Crear servidor HTTP
@@ -13,7 +13,7 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // CONTRASEÑA
-const contrasena = "1234";
+const contrasena = "2345";
 app.get("/index_pc.html", (req, res) => {                    // Acceso a index_pc.html con contraseña
   const contraseñaUsuario = req.query.password;
   if (contraseñaUsuario === contrasena) {
@@ -231,7 +231,7 @@ io.on("connection", (socket) => {                            // Se ejecuta cuand
 });
 
 // ESCUCHA DEL SERVIDOR
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 http.listen(port, () => {
   console.log(`Servidor en puerto ${port}`);
 });

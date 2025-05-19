@@ -1,10 +1,10 @@
 {
-  "name": "prueba_1",
+  "name": "prueba_2",
   "version": "1.0.0",
-  "main": "server_1.js",
+  "main": "server_2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server_1.js"
+    "start": "node server_2.js"
   },
   "keywords": [],
   "author": "",
