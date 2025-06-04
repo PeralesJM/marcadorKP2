@@ -1,5 +1,5 @@
 // IMPORTACION MODULOS
-const servidorId = "server1";
+const servidorId = "server2";
 const express = require("express");
 const app = express();                                       // Iniciar app
 const http = require("http").createServer(app);              // Crear servidor HTTP
@@ -13,7 +13,7 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // CONTRASEÑA
-const contrasena = "1234";
+const contrasena = "2345";
 app.get("/index_pc.html", (req, res) => {                    // Acceso a index_pc.html con contraseña
   const contraseñaUsuario = req.query.password;
   if (contraseñaUsuario === contrasena) {
@@ -56,7 +56,7 @@ async function guardarEstadoEnBD() {
   const { error } = await supabase
     .from('marcador_tb')
     .upsert([{
-      id: 1,
+      id: 2,
       equipo_a: estado.nombres.A,
       equipo_b: estado.nombres.B,
       resultado_a: estado.goles.A,
@@ -76,7 +76,7 @@ async function cargarEstadoDesdeBD() {
   const { data, error } = await supabase
     .from('marcador_tb')
     .select('*')
-    .eq('id', 1)
+    .eq('id', 2)
     .single();
   if (data) {
     estado = {
@@ -232,5 +232,5 @@ io.on("connection", (socket) => {                            // Se ejecuta cuand
     io.emit("estadoCompleto", estado);
     guardarEstadoEnBD();});});
 
-const port = process.env.PORT || 3001;                                         // Escucha del servidor
+const port = process.env.PORT || 3002;                                         // Escucha del servidor
 http.listen(port, () => {console.log(`Servidor en puerto ${port}`);});
